@@ -25,6 +25,17 @@ body {
     display: inline;
 }
 
+.canvas-col {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.btn-download {
+  margin-top: 1rem;
+}
+
 input {
     display: block;
     margin-bottom: 2%;

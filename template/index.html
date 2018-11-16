@@ -8,8 +8,9 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/filesaver.js"></script>
+    <script src="js/index.js"></script>
 </head>
 <body>
 <h1 class="header">News Breaker</h1>
@@ -26,11 +27,12 @@
                 <input class="inline-input" id="img-src" type="text" placeholder="Background URL">
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-8 canvas-col">
             <canvas id="canvas" width="1280" height="720"></canvas>
+            <input id="download-btn" type="submit" class="btn btn-outline-dark btn-download" value="Download">
             <div style="display: none">
                 <img id="img"
-                     src="https://via.placeholder.com/1280x720">
+                     src="static/default_img.jpg">
             </div>
         </div>
     </div>

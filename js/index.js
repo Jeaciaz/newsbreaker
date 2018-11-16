@@ -10,8 +10,10 @@ var live;
 var img;
 
 var date;
+var ajax;
 
 function init() {
+    //Visual init----------------------------------------------------
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
     date = new Date();
@@ -44,6 +46,15 @@ function init() {
     });
 
     document.getElementById('img-src').value = '';
+    //Visual init----------------------------------------------------
+
+    ajax = new XMLHttpRequest();
+    document.getElementById('download-btn').addEventListener('mouseup', function() {
+        canvas.toBlob(function(blob) {
+            saveAs(blob, 'breakingnews.png');
+        });
+    });
+
     update();
 }
 
@@ -59,9 +70,8 @@ function update() {
         var diffWid = targetWid - wid;
         var diffHei = targetHei - hei;
         context.drawImage(img, diffWid / 2, diffHei / 2, wid, hei);
-        console.log('w: %d, h: %d, mod: %d, srcW: %d, srcH: %d', wid * mod, hei * mod, mod, wid, hei);
     } catch (ex) {
-        setImage('https://via.placeholder.com/1280x720');
+        setImage('static/default_img.jpg');
     }
 
     fillRect('black', 80, 620, 100, 60);
