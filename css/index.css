@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Signika';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Signika'), local('Signika-Regular'),
+    url('fonts/Signika.woff') format('woff'),
+    url('fonts/Signika.ttf') format('truetype');
+}
+
+body {
+    font-family: Signika, sans-serif;
+}
+
+.header {
+    text-transform: uppercase;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer {
+    margin-top: 15rem;
+}
+
+.inline-input {
+    display: inline;
+}
+
+input {
+    display: block;
+    margin-bottom: 2%;
+}
+
+canvas {
+    width: 100% !important;
+}

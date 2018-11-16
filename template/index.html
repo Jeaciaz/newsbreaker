@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Break Your Onw News!</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+<h1 class="header">News Breaker</h1>
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-4">
+            <div>
+                <input class="inline-input" id="headlineInput" type="text" placeholder="Headline">
+            </div>
+            <div>
+                <input class="inline-input" id="label" type="text" placeholder="Main plot">
+            </div>
+            <div>
+                <input class="inline-input" id="img-src" type="text" placeholder="Background URL">
+            </div>
+        </div>
+        <div class="col-8">
+            <canvas id="canvas" width="1280" height="720"></canvas>
+            <div style="display: none">
+                <img id="img"
+                     src="https://via.placeholder.com/1280x720"
+                width="1280"
+                height="720">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron footer">
+    2018, Kniazev S.V.
+</div>
+<script>init();</script>
+</body>
+</html>
