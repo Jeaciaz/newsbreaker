@@ -1,19 +1,15 @@
-var http = require('http');
-var fs = require('fs');
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 8080;
 
-var server = http.createServer(function(request, response) {
-  fs.readFile('./template/index.html', function(error, data) {
-    if (error) {
-      response.writeHead(404, {'Content-Type': 'text/plain'});
-      response.end('Resource not found');
-    } else {
-      response.writeHead(200, {'Content-Type': 'text/html'});
-      response.end(data);
-    }
-  });
+  app.use(express.static('/static'));
+app.use('/css', express.static(__dirname + '/css'));
+app.use('/js', express.static(__dirname + '/js'));
+
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/template/index.html');
 });
 
-var port = process.env.PORT || 1337;
-server.listen(port);
-
-console.log("Server running at http://localhost:%d", port);
+var server = app.listen(port, function () {
+  console.log("Server running at http://localhost:%d", port);
+});
