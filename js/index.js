@@ -40,8 +40,8 @@ function init() {
 
     document.getElementById('label').value = '';
 
-    document.getElementById('img-src').addEventListener('input', function(ev) {
-        setImage(document.getElementById('img-src').value);
+    document.getElementById('img-src').addEventListener('change', function(ev) {
+        setImage(ev);
         update();
     });
 
@@ -76,7 +76,7 @@ function update() {
 
     fillRect('black', 80, 620, 100, 60);
     fillRect('#FEEB1A', 180, 620, 1100, 60);
-    fillRect('#DEDEDE', 80, 510, 1200, 110);
+    fillRect('#DEDEDEBB', 80, 510, 1200, 110);
     var gradient = context.createLinearGradient(80, 430, 80, 510);
     gradient.addColorStop(0, '#DF352B');
     gradient.addColorStop(0.49, '#B51009');
@@ -123,7 +123,12 @@ function setLive(value) {
     live = value.toUpperCase();
 }
 
-function setImage(value) {
-    img.src = value;
+function setImage(e) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+        img.onload = update;
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
 }
 
