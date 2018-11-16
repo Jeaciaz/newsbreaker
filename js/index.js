@@ -22,6 +22,7 @@ function init() {
     context.font = '900 42px Signika, Arial';
     setLive('Live');
     img = document.getElementById('img');
+    img.onload = update;
 
     document.getElementById('headlineInput').addEventListener('input', function(event) {
         setHeadline(document.getElementById('headlineInput').value);
@@ -48,7 +49,17 @@ function init() {
 
 function update() {
     try {
-        context.drawImage(img, 0, 0, 1280, 720);
+        var targetWid = 1280;
+        var targetHei = 720;
+        var wid = img.width;
+        var hei = img.height;
+        var mod = targetWid / wid;
+        wid *= mod;
+        hei *= mod;
+        var diffWid = targetWid - wid;
+        var diffHei = targetHei - hei;
+        context.drawImage(img, diffWid / 2, diffHei / 2, wid, hei);
+        console.log('w: %d, h: %d, mod: %d, srcW: %d, srcH: %d', wid * mod, hei * mod, mod, wid, hei);
     } catch (ex) {
         setImage('https://via.placeholder.com/1280x720');
     }
