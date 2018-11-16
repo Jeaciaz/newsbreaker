@@ -22,9 +22,6 @@ function init() {
     context.font = '900 42px Signika, Arial';
     setLive('Live');
     img = document.getElementById('img');
-    img.onload = function() {
-        update();
-    };
 
     document.getElementById('headlineInput').addEventListener('input', function(event) {
         setHeadline(document.getElementById('headlineInput').value);
@@ -46,6 +43,7 @@ function init() {
     });
 
     document.getElementById('img-src').value = '';
+    update();
 }
 
 function update() {
@@ -107,3 +105,4 @@ function setLive(value) {
 function setImage(value) {
     img.src = value;
 }
+
