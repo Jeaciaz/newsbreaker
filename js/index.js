@@ -64,7 +64,7 @@ function update() {
         var targetHei = 720;
         var wid = img.width;
         var hei = img.height;
-        var mod = targetWid / wid;
+        var mod = hei > wid ? targetWid / wid : targetHei / hei;
         wid *= mod;
         hei *= mod;
         var diffWid = targetWid - wid;
