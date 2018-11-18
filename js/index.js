@@ -10,7 +10,7 @@ var live;
 var img;
 
 var date;
-var ajax;
+
 
 function init() {
     //Visual init----------------------------------------------------
@@ -48,11 +48,40 @@ function init() {
     document.getElementById('img-src').value = '';
     //Visual init----------------------------------------------------
 
-    ajax = new XMLHttpRequest();
     document.getElementById('download-btn').addEventListener('mouseup', function() {
         canvas.toBlob(function(blob) {
             saveAs(blob, 'breakingnews.png');
         });
+    });
+
+    document.getElementById('imgur-btn').addEventListener('mouseup', function() {
+      (function($) {
+        var img = canvas.toDataURL().split(',')[1];
+        var alert = document.getElementById('imgur-link');
+        $.ajax({
+          url: 'https://api.imgur.com/3/image',
+          type: 'POST',
+          headers: {
+            Authorization: 'Client-ID d305f59fe14c9ca',
+            Accept: 'application/json'
+          },
+          data: {
+            type: 'base64',
+            name: 'breakingnews.png',
+            title: 'Breaking News!',
+            image: img
+          },
+          success: function(result) {
+            var url = 'https://imgur.com/' + result.data.id;
+            var deleteurl = 'https://imgur.com/delete/' + result.data.deletehash;
+            alert.innerHTML = 'Success! You can find your image <a href="' + url + '" class="alert-link">here</a>!';
+          }, error: function(err) {
+            alert.innerHTML = 'Error uploading to Imgur :(';
+          }
+        });
+        alert.style.opacity = '1';
+        alert.innerHTML = 'Processing request...';
+      })(jQuery);
     });
 
     update();

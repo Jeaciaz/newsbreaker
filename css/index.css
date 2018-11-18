@@ -18,7 +18,11 @@ body {
 }
 
 .footer {
-    margin-top: 15rem;
+    position: fixed;
+    height: 5rem;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
 }
 
 .inline-input {
@@ -26,14 +30,27 @@ body {
 }
 
 .canvas-col {
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
-.btn-download {
-  margin-top: 1rem;
+.alert-imgur-link {
+    justify-self: flex-start;
+    margin-bottom: 0;
+    margin-right: auto;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.flex-align-undercanvas {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    width: 100%;
+    align-items: center;
 }
 
 input {
