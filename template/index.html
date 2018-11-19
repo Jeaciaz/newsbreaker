@@ -9,7 +9,7 @@
     <script src="js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/filesaver.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/jqscript.js"></script>
 </head>
 <body>
 <h1 class="header">News Breaker</h1>
@@ -17,13 +17,13 @@
     <div class="row">
         <div class="col-4">
             <div>
-                <input class="inline-input" id="headlineInput" type="text" placeholder="Headline">
+                <input class="inline-input" id="headline-input" type="text" placeholder="Headline">
             </div>
             <div>
-                <input class="inline-input" id="label" type="text" placeholder="Main plot">
+                <input class="inline-input" id="newsline-input" type="text" placeholder="Newsline">
             </div>
             <div>
-                <input class="inline-input" id="img-src" type="file">
+                <input class="inline-input" id="img-input" type="file">
             </div>
         </div>
         <div class="col-8 canvas-col">
@@ -31,14 +31,13 @@
             <div class="flex-align-undercanvas">
                 <div id="imgur-link" class="alert alert-success alert-imgur-link">Imgur link here</div>
                 <div class="btn-group">
-                    <button id="imgur-btn" type="button" class="btn btn-outline-success">Upload on Imgur</button>
-                    <button id="download-btn" type="button" class="btn btn-outline-dark">Download</button>
+                  <button id="btn-imgur" type="button" class="btn btn-success">Upload to Imgur<sup></sup></button>
+                    <button id="btn-download" type="button" class="btn btn-dark">Download</button>
                 </div>
             </div>
             <div style="display: none">
                 <img id="img"
-                     src="static/default_img.jpg"
-                crossorigin="anonymous">
+                     src="static/default_img.jpg">
             </div>
         </div>
     </div>
@@ -46,8 +45,5 @@
 <div class="jumbotron footer">
     2018, Kniazev S.V.
 </div>
-<script>
-  window.addEventListener('load', init);
-</script>
 </body>
 </html>
