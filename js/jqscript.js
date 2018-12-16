@@ -54,7 +54,7 @@ $(document).ready(function() {
                 let deleteurl = 'https://imgur.com/delete/' + result.data.deletehash;
                 let html = `Success! You can find your image <a href="${url}" class="alert-link">here</a>!
                             <p>Would you like to make a cross-reference?</p>
-                            <input id="crossref-url" type="text" placeholder="Desired URL, f.ex. JJBACosplay">
+                            <input id="crossref-url" class="w-100" type="text" placeholder="Desired URL, f.ex. JJBACosplay">
                             <input id="btn-submit-crossref" type="submit" value="Submit!">`;
                 alert_box.html(html);
                 $('#btn-submit-crossref').click(() => {
