@@ -6,8 +6,8 @@ const envvar = require('dotenv').config();
 
 const pg_config = {
     host: 'mememadb-server.postgres.database.azure.com',
-    user: process.env.USERNAME,
-    password: process.env.PASSWORD,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
     database: process.env.DATABASE,
     port: 5432,
     ssl: true
