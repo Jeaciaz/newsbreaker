@@ -68,7 +68,7 @@ $(document).ready(function() {
                             url_to: url
                         },
                         success: res => {
-                            alert.html(`Success! You can find your image by the link '<a href="https://memema.azurewebsites.net/${res.link}">https://memema.azurewebsites.com/${res.link}</a>'`);
+                            alert.html(`Success! You can find your image by the link '<a href="https://memema.azurewebsites.net/${res.link}">https://memema.azurewebsites.net/${res.link}</a>'`);
                         },
                         error: res => {
                             alert('Unable to make a cross-reference link! The URL is probably taken');
