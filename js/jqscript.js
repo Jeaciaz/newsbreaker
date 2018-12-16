@@ -52,7 +52,31 @@ $(document).ready(function() {
             success: function(result) {
                 let url = 'https://i.imgur.com/' + result.data.id + '.jpg';
                 let deleteurl = 'https://imgur.com/delete/' + result.data.deletehash;
-                alert.html('Success! You can find your image <a href="' + url + '" class="alert-link">here</a>!');
+                let html = `Success! You can find your image <a href="${url}" class="alert-link">here</a>!
+                            <p>Would you like to make a cross-reference?</p>
+                            <form id="form-crossref">
+                                <input type="text" placeholder="Desired URL, f.ex. JJBACosplay">
+                                <input type="submit" value="Submit!">
+                            </form>`;
+                alert.html(html);
+                $('#form-crossref').submit(() => {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/makeCrossRef',
+                        data: {
+                            url_from: $('#form-crossref input[type="text"]').val(),
+                            url_to: url
+                        },
+                        success: res => {
+                            alert.html(`Success! You can find your image by the link '<a href="https://memema.azurewebsites.com/${res.link}">https://memema.azurewebsites.com/${res.link}</a>'`);
+                        },
+                        error: res => {
+                            alert('Unable to make a cross-reference link! The URL is probably taken');
+                            alert.html(html);
+                        }
+                    });
+                    alert.html('Uploading...');
+                });
             }, error: function(err) {
                 alert.html('Error uploading to Imgur :(');
             }
@@ -60,7 +84,9 @@ $(document).ready(function() {
         alert.css('opacity', '1');
         alert.html('Processing request...');
     });
-    update();
+    $(window).on('load', () => {
+        update();
+    });
 });
 
 function update(event) {
@@ -119,7 +145,7 @@ function fillRect(style, x, y, width, height) {
 }
 
 function fillText(style, fontSize, text, x, y) {
-    context.font = '900 ' + fontSize + ' Signika, Arial';
+    context.font = '900 ' + fontSize + ' Signika, sans-serif';
     context.fillStyle = style;
     context.fillText(text.toUpperCase(), x, y);
 }

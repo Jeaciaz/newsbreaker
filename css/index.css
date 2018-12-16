@@ -18,18 +18,6 @@ body {
     text-align: center;
 }
 
-.footer {
-    position: fixed;
-    line-height: 3rem;
-    bottom: 0;
-    width: 100%;
-    margin: 0;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    padding-left: 1rem;
-    border-radius: 0;
-}
-
 .inline-input {
     display: inline;
 }
