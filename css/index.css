@@ -9,6 +9,7 @@
 
 body {
     font-family: Signika, sans-serif;
+    margin-bottom: 5rem;
 }
 
 .header {
@@ -19,10 +20,14 @@ body {
 
 .footer {
     position: fixed;
-    height: 5rem;
+    line-height: 3rem;
     bottom: 0;
     width: 100%;
     margin: 0;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    border-radius: 0;
 }
 
 .inline-input {
@@ -34,6 +39,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    padding: 1rem 3rem;
 }
 
 .alert-imgur-link {
@@ -53,6 +59,10 @@ body {
     align-items: center;
 }
 
+.img-logo {
+    width: 4rem;
+}
+
 input {
     display: block;
     margin-bottom: 2%;
@@ -60,4 +70,16 @@ input {
 
 canvas {
     width: 100% !important;
+}
+
+#headline-input {
+    border: none;
+    background-color: #DEDEDEBB;
+    padding: 0.25rem 1rem;
+}
+
+#newsline-input {
+    border: none;
+    background-color: #FEEB1Add;
+    padding: 0.25rem 1rem;
 }

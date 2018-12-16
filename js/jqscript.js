@@ -50,7 +50,7 @@ $(document).ready(function() {
                 image: img
             },
             success: function(result) {
-                let url = 'https://imgur.com/' + result.data.id;
+                let url = 'https://i.imgur.com/' + result.data.id + '.jpg';
                 let deleteurl = 'https://imgur.com/delete/' + result.data.deletehash;
                 alert.html('Success! You can find your image <a href="' + url + '" class="alert-link">here</a>!');
             }, error: function(err) {
@@ -66,7 +66,7 @@ $(document).ready(function() {
 function update(event) {
     let date = new Date();
     time = (date.getHours() < 10 ? '0' : '') + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
-    if (event != null) {
+    if (event) {
         switch (event.target.id) {
             case 'headline-input':
                 headline = event.target.value;
@@ -110,6 +110,7 @@ function update(event) {
     fillText('white', '28px', time, 95, 660);
     fillText('black', '28px', newsline === '' ? 'Newsline' : newsline, 200, 660);
     fillText('white', '36px', 'Live', 95, 85);
+    mocha.run();
 }
 
 function fillRect(style, x, y, width, height) {

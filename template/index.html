@@ -3,46 +3,54 @@
     <meta charset="utf-8">
     <title>News Breaker</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/index.css">
+
     <script src="js/jquery.js"></script>
     <script src="js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/filesaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
     <script src="js/jqscript.js"></script>
+    <script src="js/test.js"></script>
 </head>
-<body>
-<h1 class="header">News Breaker</h1>
-<div class="container pt-5">
-    <div class="row">
-        <div class="col-4">
-            <div>
-                <input class="inline-input" id="headline-input" type="text" placeholder="Headline">
-            </div>
-            <div>
-                <input class="inline-input" id="newsline-input" type="text" placeholder="Newsline">
-            </div>
-            <div>
-                <input class="inline-input" id="img-input" type="file">
-            </div>
-        </div>
-        <div class="col-8 canvas-col">
-            <canvas id="canvas" width="1280" height="720"></canvas>
-            <div class="flex-align-undercanvas">
-                <div id="imgur-link" class="alert alert-success alert-imgur-link">Imgur link here</div>
-                <div class="btn-group">
-                  <button id="btn-imgur" type="button" class="btn btn-success">Upload to Imgur<sup></sup></button>
-                    <button id="btn-download" type="button" class="btn btn-dark">Download</button>
-                </div>
-            </div>
-            <div style="display: none">
-                <img id="img"
-                     src="static/default_img.jpg">
-            </div>
+<body class="bg-secondary text-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+    <a class="navbar-brand" href="/">
+        <h1 class="header d-inline m-0">News</h1>
+        <img class="img-fluid img-logo d-inline" src="static/logo.svg">
+        <h1 class="header d-inline m-0">Breaker</h1>
+    </a>
+</nav>
+<div class="container justify-content-between d-flex mt-3">
+    <label>
+        Enter Headline: <input class="inline-input d-block" id="headline-input" type="text" placeholder="Headline">
+    </label>
+    <label>
+        Enter Newsline: <input class="inline-input d-block" id="newsline-input" type="text" placeholder="Newsline">
+    </label>
+    <label>
+        Upload background image: <input class="inline-input form-control-file d-block" id="img-input" type="file">
+    </label>
+</div>
+<div class="container d-flex flex-column">
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <div class="flex-align-undercanvas">
+        <div id="imgur-link" class="alert alert-danger alert-imgur-link">Imgur link here</div>
+        <div class="btn-group">
+          <button id="btn-imgur" type="button" class="btn btn-danger">Upload to Imgur<sup></sup></button>
+            <button id="btn-download" type="button" class="btn btn-dark">Download</button>
         </div>
     </div>
 </div>
-<div class="jumbotron footer">
+<div style="display: none">
+    <img id="img"
+         src="/static/default_img.jpg">
+</div>
+<div class="jumbotron container text-dark d-none" id="mocha"></div>
+<div class="jumbotron footer text-dark">
     2018, Kniazev S.V.
 </div>
 </body>
