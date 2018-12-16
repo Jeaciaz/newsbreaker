@@ -54,7 +54,7 @@ app.post('/makeCrossRef', (req, res) => {
         try {
             await client.query(`insert into links(link_from, link_to) values ('/${url_from}', '${url_to}')`);
             app.get(`/${url_from}`, (req, res) => {
-                res.redirect(url_to);
+                return res.redirect(url_to);
             });
             return res.json({success: false, link: url_from});
         } catch(e) {
