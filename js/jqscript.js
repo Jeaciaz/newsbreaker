@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     imgurBtn.click(function() {
         let img = canvas.toDataURL().split(',')[1];
-        let alert = $('#imgur-link');
+        let alert_box = $('#imgur-link');
         $.ajax({
             url: 'https://api.imgur.com/3/image',
             type: 'POST',
@@ -54,35 +54,38 @@ $(document).ready(function() {
                 let deleteurl = 'https://imgur.com/delete/' + result.data.deletehash;
                 let html = `Success! You can find your image <a href="${url}" class="alert-link">here</a>!
                             <p>Would you like to make a cross-reference?</p>
-                            <form id="form-crossref">
-                                <input type="text" placeholder="Desired URL, f.ex. JJBACosplay">
-                                <input type="submit" value="Submit!">
-                            </form>`;
-                alert.html(html);
-                $('#form-crossref').submit(() => {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/makeCrossRef',
-                        data: {
-                            url_from: $('#form-crossref input[type="text"]').val(),
-                            url_to: url
-                        },
-                        success: res => {
-                            alert.html(`Success! You can find your image by the link '<a href="https://memema.azurewebsites.net/${res.link}">https://memema.azurewebsites.net/${res.link}</a>'`);
-                        },
-                        error: res => {
-                            alert('Unable to make a cross-reference link! The URL is probably taken');
-                            alert.html(html);
-                        }
-                    });
-                    alert.html('Uploading...');
+                            <input id="crossref-url" type="text" placeholder="Desired URL, f.ex. JJBACosplay">
+                            <input id="btn-submit-crossref" type="submit" value="Submit!">`;
+                alert_box.html(html);
+                $('#btn-submit-crossref').click(() => {
+                    let url_from = $('#crossref-url').val();
+                    if (!url_from.match(/^[a-zA-Z]+$/)) {
+                        alert('The link must consist only of english letters!');
+                    } else {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/makeCrossRef',
+                            data: {
+                                url_from: url_from,
+                                url_to: url
+                            },
+                            success: res => {
+                                alert_box.html(`Success! You can find your image by the link '<a href="https://memema.azurewebsites.net/${res.link}">https://memema.azurewebsites.net/${res.link}</a>'`);
+                            },
+                            error: res => {
+                                alert('Unable to make a cross-reference link! The URL is probably taken');
+                                alert_box.html(html);
+                            }
+                        });
+                        alert_box.html('Uploading...');
+                    }
                 });
             }, error: function(err) {
-                alert.html('Error uploading to Imgur :(');
+                alert_box.html('Error uploading to Imgur :(');
             }
         });
-        alert.css('opacity', '1');
-        alert.html('Processing request...');
+        alert_box.css('opacity', '1');
+        alert_box.html('Processing request...');
     });
     $(window).on('load', () => {
         update();

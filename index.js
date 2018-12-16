@@ -13,8 +13,6 @@ const pg_config = {
     ssl: true
 };
 
-console.log(process.env.USERNAME, process.env.PASSWORD, process.env.DATABASE);
-
 const client = new pg.Client(pg_config);
 
 const app = express();
